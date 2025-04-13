@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图像识别</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <body>
+        <!-- 菜单栏 -->
+        <nav class="navbar navbar-expand-md navbar-dark">
+          <div class="container">
+            <a class="navbar-brand">AI <span>实验室</span></a>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="介绍.html">介绍</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">AI应用</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="page2.html">在线训练</a>
+                </li>
+      
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">图像识别</a>
+                </li>
+              </ul>
+      
+            </div>
+          </div>
+        </nav>
+
+        <!-- 主体 -->
+
+        <main class="container">
+            <div class="row">
+    
+                <!-- Sidebar -->
+                <aside class="col-md-4">
+                    <div class="sidebar-box">
+                        <h4>参数信息</h4>
+                        <div class="list-group list-group-root">
+                            <fieldset>
+                                <div class="form-group">
+                                    <form>
+                                        <label>Class1</label>
+                                        <select style="width: 90%;">
+                                            <option>human</option>
+                                            <option>apple</option>
+                                        </select>
+                                    </form>
+                                </div>
+                                <div class="form-group">
+                                    <form>
+                                        <label>Class2</label>
+                                        <select style="width: 90%;">
+                                            <option>cup</option>
+                                            <option>dog</option>
+                                        </select>
+                                    </form>
+                                </div>
+
+                                <div class="form-group">
+                                    <form>
+                                        <label>Optimizer</label>
+                                        <select style="width: 90%;">
+                                            <option>Adam</option>
+                                            <option>Adamax</option>
+                                            <option>RMSprop</option>
+                                            <option>SGD</option>
+                                        </select>
+                                    </form>
+                                </div>
+    
+                                <div class="form-group">
+                                    <label>Batch size</label>
+                                    <input type="text" class="form-control" id="exampleInput2">
+                                </div>
+                                <button type="submit" onclick="init()" style="  margin-top: 10px;
+                                color: #fff;
+                                background-color: #333333;
+                                border-color: #333333; 
+                                border-radius: 10%;">Start</button>
+                            </fieldset>
+                        </div>
+                    </div>
+    
+                    <div class="sidebar-box sidebar-box-bg">
+                        <h4>模型介绍</h4>
+                        <p>使用方法：点击start，允许浏览器使用相机。</p>
+                        <p>说明：该视觉模型经训练后可区分人脸（class1）与水杯（class2）。请等待浏览器唤起摄像头后，在屏幕进行实时的类别检测。<a href="#" class="readmore"></a></p>
+                    </div>
+                </aside>
+
+                <div class="col-md-8">
+        <div>Teachable Machine Image Model</div>
+<div id="webcam-container" style="height: 400px; width: 400px;"></div>
+<div id="label-container" style="color: #333333; margin: 10px;"></div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+    // More API functions here:
+    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+    // the link to your model provided by Teachable Machine export panel
+    const URL = "https://teachablemachine.withgoogle.com/models/YsaJ_Vcpz/";
+
+    let model, webcam, labelContainer, maxPredictions;
+
+    // Load the image model and setup the webcam
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        // load the model and metadata
+        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+        // or files from your local hard drive
+        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // Convenience function to setup a webcam
+        const flip = true; // whether to flip the webcam
+        webcam = new tmImage.Webcam(400, 400, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        // append elements to the DOM
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++) { // and class labels
+            labelContainer.appendChild(document.createElement("div"));
+        }
+    }
+
+    async function loop() {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+
+    // run the webcam image through the image model
+    async function predict() {
+        // predict can take in an image, video or canvas html element
+        const prediction = await model.predict(webcam.canvas);
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+    }
+</script>
+    
+</body>
+</html>

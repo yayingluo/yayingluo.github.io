@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机器学习</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- 菜单栏 -->
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">AI <span>实验室</span></a>
+
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mr-auto justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="介绍.html">介绍</a>
+                      </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">AI应用</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="page2.html">在线训练</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="page3.html">图像识别</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <!-- Main content area -->
+    <main class="container">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <aside class="col-md-4">
+                <div class="sidebar-box">
+                    <h4>参数信息</h4>
+                    <div class="list-group list-group-root">
+                        <fieldset>
+                            <div class="form-group">
+                                <label>Task</label>
+                                <p style="font-size:small;">Which problem do you want to solve?</p>
+                                <form>
+                                    <select style="width: 90%;">
+                                        <option>Image classification</option>
+                                        <option>Obeject detection</option>
+                                    </select>
+                                </form>
+                                <p style="font-size:small;">In which framework?</p>
+                                <form>
+                                    <select style="width: 90%;">
+                                        <option>PyTorch</option>
+                                        <option>scikit-learn</option>
+                                    </select>
+                                </form>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Input data</label>
+                                <p style="font-size:small;">which data do you want to use?</p>
+                                <form>
+                                    <select style="width: 90%;">
+                                        <option>Public dataset</option>
+                                        <option>Numpy arrays</option>
+                                        <option>Image files</option>
+                                    </select>
+                                </form>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Learning Rate</label>
+                                <input type="text" class="form-control" id="exampleInput1">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Batch size</label>
+                                <input type="text" class="form-control" id="exampleInput2">
+                            </div>
+
+                            <div class="form-group">
+                                <form>
+                                    <label>Optimizer</label>
+                                    <select style="width: 90%;">
+                                        <option>Adam</option>
+                                        <option>Adamax</option>
+                                        <option>RMSprop</option>
+                                        <option>SGD</option>
+                                    </select>
+                                </form>
+                            </div>
+
+                            <div class="form-group">
+                                <form>
+                                    <label>Degree</label>
+                                    <select id="country" name="country" style="width: 90%;">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </form>
+                            </div>
+                            <button type="submit" class="btn-primary">Submit</button>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="sidebar-box sidebar-box-bg">
+                    <h4>模型介绍</h4>
+                    <p>展示一个封装后的机器学习模型。目标是可视化不同参数配置下的不同训练结果，参数可在页面自定义设置。<a href="#" class="readmore"></a></p>
+                </div>
+            </aside>
+
+            <!-- Main content -->
+            <div class="col-md-8">
+                <article>
+                    <h2 class="article-title">Code Generator for Machine Learning</h2>
+
+                    <p class="article-meta">Posted on <time datetime="2017-05-14">3-25</time> by <a href="#"
+                            rel="author">Luo Yaying</a></p>
+                    <ul>
+                        <li>Specify model in the sidebar</li>
+                        <li>Training code will be generated below</li>
+                        <li>Download and do magic! ✨</li>
+                    </ul>
+                    <img src="picture/picture10.png" style="width: 600px;height: 400px;">
+                    <a href="#" class="btn btn-primary" style="">Download</a>
+                    <a href="#" class="btn btn-secondary">Comments</a>
+             </article>
+            </div>
+
+
+</html>

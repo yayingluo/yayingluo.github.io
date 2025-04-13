@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- font -->
+
+  <title>首页</title>
+  <style>
+        .card {
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    .container2{
+        text-align: center
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 菜单栏 -->
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <div class="container">
+      <a class="navbar-brand">AI <span>实验室</span></a>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="介绍.html">介绍</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">AI应用</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="page2.html">在线训练</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="page3.html">图像识别</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主要内容 -->
+
+  
+  <!-- 页面主体内容 -->
+  <
+  <!-- 正文内容 -->
+  <div class="container2">
+    <h1>欢迎来到 AI 实验室</h1>
+    <p>这是一个面向学习者与 AI 爱好者的平台，希望以网页交互形式展示人工智能与机器学习的项目成果。</p>
+  </div>
+  <div class="container">
+    <h2>设计初衷</h2>
+    <p>想设计一个关于AI和机器学习应用的可视化展示平台，使非专业用户也能轻松体验 AI 项目。</p>
+    <ul>
+      <li>支持参数调整与结果展示</li>
+      <li>无需编程基础即可体验模型</li>
+      <li>图像识别模型可接入摄像头进行实时预测</li>
+    </ul>
+    <h2>网页结构</h2>
+    <ul>
+      <li><strong>AI应用：</strong> 提供了最新AI应用示例的讯息</li>
+      <li><strong>在线训练：</strong> 一个项目示例，用户可通过调整基础的参数，生成机器学习模型的展示结果</li>
+      <li><strong>图像识别：</strong> 训练实时调用摄像头，识别人脸/物体</li>
+    </ul>
+
+    <h2>页面设计</h2>
+    <ul>
+        <li>顶部导航:</li>
+            <li>- 布局、悬浮动效</li>
+        <li>主页:</li>
+           <li>- 卡片布局设计、图文、边框阴影</li>
+           <li>- 鼠标悬浮放大、透明度改变、下划线、圆弧角</li>
+    </ul>
+    <h2>图像识别示例</h2>
+    <p>点击图像识别页面的“Start”按钮后，浏览器将请求访问摄像头。</p>
+    <p>模型将自动识别以下类别：</p>
+    <ul>
+      <li><strong>Class 1：</strong> 人脸</li>
+      <li><strong>Class 2：</strong> 水杯</li>
+    </ul>
+
+    <div class="image-row">
+      <img src="picture/class1.jpg" width="300" height="200" alt="识别人脸示例">
+      <img src="picture/class2.jpg" width="300" height="200" alt="识别水杯示例">
+    </div>
+
+    <p style="margin-top: 20px;">图像识别模块引用自Google Experiments 项目 <a href="https://experiments.withgoogle.com/tiny-sorter/view" target="_blank">Tiny Sorter</a>。</p>
+    <i>yaying, 2021.6</i>
+  </div>
+
+
+  
+</body>
+
+</html>
